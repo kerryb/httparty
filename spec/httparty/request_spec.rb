@@ -33,7 +33,7 @@ describe HTTParty::Request do
     
     it 'should not use ssl for port 80' do
       request = HTTParty::Request.new(Net::HTTP::Get, 'http://foobar.com')
-      @request.send(:http).use_ssl?.should == false
+      request.send(:http).use_ssl?.should == false
     end
 
     it "should use basic auth when configured" do
