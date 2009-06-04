@@ -43,7 +43,7 @@ module HTTParty
     private
       def http
         http = Net::HTTP.new(uri.host, uri.port, options[:http_proxyaddr], options[:http_proxyport])
-        http.use_ssl = (uri.port == 443)
+        http.use_ssl = (uri.port == 443 || uri.scheme == 'https')
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         http
       end

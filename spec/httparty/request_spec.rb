@@ -36,6 +36,11 @@ describe HTTParty::Request do
       request.send(:http).use_ssl?.should == false
     end
 
+    it 'should use ssl for https scheme' do
+      request = HTTParty::Request.new(Net::HTTP::Get, 'https://foobar.com')
+      request.send(:http).use_ssl?.should == true
+    end
+
     it "should use basic auth when configured" do
       @request.options[:basic_auth] = {:username => 'foobar', :password => 'secret'}
       @request.send(:setup_raw_request)
